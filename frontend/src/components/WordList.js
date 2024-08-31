@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { Alert } from 'react-bootstrap';
+
 import { useSortableData } from '../hooks/useSortableData';
 
 import TableWord from './TableWord';
@@ -38,15 +40,20 @@ function WordList() {
 
   return (
     <div>
-      <h1>Word Statistics</h1>
-      <TableWord
-        data={sortedWords}
-        loading={loading}
-        error={error}
-        requestSort={requestSort}
-        getSortIcon={getSortIcon}
-        columns={columns}
-      />
+      <h3>Word Statistics</h3>
+      {error && <Alert variant="danger">{error}</Alert>}
+      {words.length === 0 && !loading ? (
+        <Alert variant="info">No words available.</Alert>
+      ) : (
+        <TableWord
+          data={sortedWords}
+          loading={loading}
+          error={error}
+          requestSort={requestSort}
+          getSortIcon={getSortIcon}
+          columns={columns}
+        />
+      )}
     </div>
   );
 }
