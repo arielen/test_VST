@@ -25,6 +25,7 @@ This is a Django-based API project that allows users to upload text files, proce
     - [Download File]()
     - [Show Text From File]()
 - [Accessing the API Documentation](#accessing-the-api-documentation)
+- [Presentation](#present-front)
 
 
 ## Features
@@ -114,3 +115,7 @@ The API documentation is automatically generated using `drf-spectacular`. After 
 
 - Swagger UI: ```http://localhost:8000/api/schema/swagger-ui/```
 - ReDoc: ```http://localhost:8000/api/schema/redoc/```
+
+## Present Front
+
+[Screencast_20240831_145239.webm](https://github.com/user-attachments/assets/ff0811da-7791-4068-b677-7285775d9d0a)
