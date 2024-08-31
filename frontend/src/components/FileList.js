@@ -103,23 +103,27 @@ function FileList() {
   return (
     <div className="my-4">
       <h3>Files</h3>
-      <ListGroup>
-        {files.map(file => (
-          <ListGroup.Item key={file.id} className="d-flex justify-content-between align-items-center" onClick={() => handleFileClick(file)} style={{ cursor: 'pointer' }}>
-            <div>
-              {file.file_name}
-            </div>
-            <ButtonGroup>
-              <Button variant="primary" onClick={() => handleViewFile(file)}>
-                <EyeFill /> View
-              </Button>
-              <Button variant="success" onClick={() => handleDownloadFile(file)}>
-                <CloudDownloadFill /> Download
-              </Button>
-            </ButtonGroup>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      {files.length === 0 ? (
+        <Alert variant="info">No files available.</Alert>
+      ) : (
+        <ListGroup>
+          {files.map(file => (
+            <ListGroup.Item key={file.id} className="d-flex justify-content-between align-items-center" onClick={() => handleFileClick(file)} style={{ cursor: 'pointer' }}>
+              <div>
+                {file.file_name}
+              </div>
+              <ButtonGroup>
+                <Button variant="primary" onClick={() => handleViewFile(file)}>
+                  <EyeFill /> View
+                </Button>
+                <Button variant="success" onClick={() => handleDownloadFile(file)}>
+                  <CloudDownloadFill /> Download
+                </Button>
+              </ButtonGroup>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      )}
 
       <FileStatisticsModal
         show={showModal}
