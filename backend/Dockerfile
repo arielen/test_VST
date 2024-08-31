@@ -8,4 +8,4 @@ COPY requirements.txt /app/
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-CMD ["python", "manage.py", "makemigrations", "migrate"]
+CMD ["sh", "-c", "python manage.py makemigrations && python manage.py migrate"]
