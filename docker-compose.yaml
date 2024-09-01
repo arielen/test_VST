@@ -10,15 +10,17 @@ services:
       - ./backend:/app
     ports:
       - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     restart: always
-    volumes:
-      - ./frontend:/app
     ports:
       - "3000:3000"
     command: npm start
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
