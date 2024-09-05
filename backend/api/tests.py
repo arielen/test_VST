@@ -73,7 +73,7 @@ class DownloadFileViewTest(TestCase, FileTestMixin):
     def test_download_file_success(self) -> None:
         response = self.client.get(self.download_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response['Content-Disposition'], f'attachment; filename={self.file.file_name}')
+        self.assertEqual(response['Content-Disposition'], f'attachment; filename="{self.file.file_name}"')
 
     def test_download_file_not_found(self) -> None:
         response = self.client.get(reverse('download-file', kwargs={'pk': 999}))
@@ -95,7 +95,7 @@ class ShowDownloadFileViewTest(TestCase, FileTestMixin):
     def test_show_file_success(self) -> None:
         response = self.client.get(self.show_url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response['Content-Disposition'], f'inline; filename={self.file.file_name}')
+        self.assertEqual(response['Content-Disposition'], f'inline; filename="{self.file.file_name}"')
 
     def test_show_file_not_found(self) -> None:
         response = self.client.get(reverse('show-file', kwargs={'pk': 999}))
