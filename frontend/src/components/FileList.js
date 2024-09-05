@@ -108,8 +108,8 @@ function FileList() {
       ) : (
         <ListGroup>
           {files.map(file => (
-            <ListGroup.Item key={file.id} className="d-flex justify-content-between align-items-center" onClick={() => handleFileClick(file)} style={{ cursor: 'pointer' }}>
-              <div>
+            <ListGroup.Item key={file.id} className="d-flex justify-content-between align-items-center">
+              <div onClick={() => handleFileClick(file)} style={{ cursor: 'pointer' }}>
                 {file.file_name}
               </div>
               <ButtonGroup>
